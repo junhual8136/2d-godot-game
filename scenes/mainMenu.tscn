@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61gotpmta085"]
+
+[ext_resource type="Script" path="res://scripts/PlayButton.cs" id="1_5ue6e"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 257.0
+offset_right = 663.0
+offset_bottom = 371.0
+text = "Play"
+script = ExtResource("1_5ue6e")
+
+[node name="Option Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 396.0
+offset_right = 663.0
+offset_bottom = 510.0
+text = "Option
+(no function yet)
+(part of beyond mvp)"
+
+[node name="Title" type="Label" parent="."]
+offset_left = 325.0
+offset_top = 85.0
+offset_right = 809.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 50
+text = "Name to be decided"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(538, 315)

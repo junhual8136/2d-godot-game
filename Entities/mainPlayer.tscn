@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://d21mw5x84t40t"]
+
+[ext_resource type="Script" path="res://scripts/MainPlayer.cs" id="1_5ue7l"]
+[ext_resource type="Texture2D" uid="uid://c830x3qkm1b2m" path="res://Sprites/thickIdleSheet.png" id="1_gxwgb"]
+[ext_resource type="Script" path="res://scripts/AnimatedSprite2d.cs" id="3_ug6ea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mst2t"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6sow"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iapim"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hm56"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ityvx"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bqgd"]
+atlas = ExtResource("1_gxwgb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0iwv5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mst2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6sow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iapim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hm56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ityvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bqgd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_opgj1"]
+radius = 4.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_5ue7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(113, -95)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0iwv5")
+frame_progress = 0.35208
+script = ExtResource("3_ug6ea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(112, -94)
+shape = SubResource("CapsuleShape2D_opgj1")
+one_way_collision_margin = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(112, -90)
+zoom = Vector2(4, 4)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(116, -46)
+width = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.025
+
+[node name="Label" type="Label" parent="."]
+offset_left = 90.0
+offset_top = -42.0
+offset_right = 130.0
+offset_bottom = -19.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
