@@ -7,12 +7,19 @@ public partial class MainPlayer : CharacterBody2D
 	private AnimatedSprite2D _playerLocation;
 	private Label _multiplierLabel;
 	private Vector2 _targetAim;
+	
 	private bool _isJumping;
+	
 	private Timer _timer; 
 	
 	private const float Speed = 100.0f;
 	private const float JumpPower = 350.0f;
 	private int _multiplier = 1;
+
+
+	[Export] public bool onFloor = false;
+
+
 	
 	public override void _Ready()
 	{
@@ -39,6 +46,7 @@ public partial class MainPlayer : CharacterBody2D
 	private float _angle;
 	public override void _Process(double delta)
 	{
+		
 		// prevents double leaps/jumps
 		if (!IsOnFloor()) return;
 		
@@ -96,7 +104,6 @@ public partial class MainPlayer : CharacterBody2D
         
 			
 		Velocity = jumpDirection * (JumpPower * (1 + _multiplier / 100.0f));
-		// GD.Print($"jumping multiplier: {_multiplier}, velocity: {Velocity}");
 
 		_isJumping = true;
 		_multiplier = 0;
@@ -124,10 +131,14 @@ public partial class MainPlayer : CharacterBody2D
 		// According to the godot forums, this should allow for horizontal movement even when the player is on the ground
 		if (!_isJumping || IsOnFloor())
 		{
-			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-			if (direction != Vector2.Zero)
+			Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+			// stops any movement attempts if player is not on the floor
+			if (direction != Vector2.Zero && IsOnFloor())
 			{
+				
 				velocity.X = direction.X * Speed;
+
+				
 			}
 			else if (IsOnFloor())
 			{

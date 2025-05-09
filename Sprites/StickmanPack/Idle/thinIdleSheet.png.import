@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c830x3qkm1b2m"
-path="res://.godot/imported/thickIdleSheet.png-b527c786b453f9bdfe2f5cbaa3146d6b.ctex"
+uid="uid://l2bwkslgpyny"
+path="res://.godot/imported/thinIdleSheet.png-7477544728914199192d8d7f367ad4bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/thickIdleSheet.png"
-dest_files=["res://.godot/imported/thickIdleSheet.png-b527c786b453f9bdfe2f5cbaa3146d6b.ctex"]
+source_file="res://Sprites/StickmanPack/Idle/thinIdleSheet.png"
+dest_files=["res://.godot/imported/thinIdleSheet.png-7477544728914199192d8d7f367ad4bd.ctex"]
 
 [params]
 
