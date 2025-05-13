@@ -16,9 +16,12 @@ public partial class MainPlayer : CharacterBody2D
 	private const float JumpPower = 350.0f;
 	private int _multiplier = 1;
 
+	public int tutorialStage;
+
 
 	[Export] public bool onFloor = false;
 
+	
 
 	
 	public override void _Ready()
@@ -53,6 +56,7 @@ public partial class MainPlayer : CharacterBody2D
 		bool wasAiming = _isAiming;
 		if (Input.IsMouseButtonPressed(MouseButton.Left))
 		{
+			if (tutorialStage == 1) tutorialStage++;
 			if (!_isAiming)
 			{
 				_timer.Start();
@@ -132,9 +136,12 @@ public partial class MainPlayer : CharacterBody2D
 		if (!_isJumping || IsOnFloor())
 		{
 			Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+			
+			
 			// stops any movement attempts if player is not on the floor
 			if (direction != Vector2.Zero && IsOnFloor())
 			{
+				if (tutorialStage == 0) tutorialStage++; 
 				
 				velocity.X = direction.X * Speed;
 
